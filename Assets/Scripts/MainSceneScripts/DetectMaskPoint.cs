@@ -47,9 +47,10 @@ public class DetectMaskPoint : MonoBehaviour
 
         if (args.updated.Count > 0)
         {
+            Quaternion rotate = args.updated[0].transform.rotation;
             Vector3 point = args.updated[0].vertices[count];
             mask.transform.position = args.updated[0].transform.TransformPoint(point);
-            mask.transform.rotation = args.updated[0].transform.rotation;
+            //mask.transform.rotation = new Quaternion(-rotate.x, -rotate.y + 180.0f, -rotate.z, rotate.w);
             mask.SetActive(true);
 
             NativeArray<Vector3> verticeArray = args.updated[0].vertices;
@@ -67,7 +68,7 @@ public class DetectMaskPoint : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Began)
             {
-                count++;
+                //count++;
             }
         }
 

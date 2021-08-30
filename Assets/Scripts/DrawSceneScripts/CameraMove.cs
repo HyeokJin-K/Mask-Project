@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public GameObject targetMesh;
-    public float distacne = -3.0f;
+    public float distacne = -5.0f;
+    public float wheelSpeed = 2.0f;
 
     float xR;
     float yR;
@@ -31,8 +32,8 @@ public class CameraMove : MonoBehaviour
             yR += yRotation;                   
         }    
 
-        distacne += Input.GetAxisRaw("Mouse ScrollWheel");
-        distacne = Mathf.Clamp(distacne, -10.0f, -1.0f);
+        distacne += Input.GetAxisRaw("Mouse ScrollWheel") * wheelSpeed;
+        distacne = Mathf.Clamp(distacne, -25.0f, -10.0f);
     }
 
     void LateUpdate()
