@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DrawInk : MonoBehaviour
 {
 
-    //public GameObject testOb;    
+    //public GameObject testOb;
+    
+    Texture2D tex;
 
     [Range(0.1f, 1.0f)]
     public float range = 0.5f;
@@ -17,6 +20,7 @@ public class DrawInk : MonoBehaviour
     Vector3[] vertices;
 
     int count;
+    Color drawColor;
 
     private void Awake()
     {
@@ -33,6 +37,8 @@ public class DrawInk : MonoBehaviour
             colors[i] = Color.white;
         }
         mesh.colors = colors;
+
+
     }
 
     void Update()
@@ -53,19 +59,25 @@ public class DrawInk : MonoBehaviour
 
                 //Instantiate(testOb, hit.point, Quaternion.identity);
                 //  충돌한 오브젝트의 메쉬를 가져온다.
-                
-                //  해당 메쉬의 정점을 모두 구한다.
-                
-                
-                //  모든 정점의 좌표가 클릭한 좌표로 부터 해당 범위 안에 있는지 확인한다.
 
+                //  해당 메쉬의 정점을 모두 구한다.
+
+
+                //  모든 정점의 좌표가 클릭한 좌표로 부터 해당 범위 안에 있는지 확인한다.                                
+
+                if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Palette"))
+                {
+                    tex = (Texture2D)hit.transform.GetComponent<MeshRenderer>().material.mainTexture;
+                    drawColor = tex.GetPixel((int)(hit.textureCoord.x * tex.width), (int)(hit.textureCoord.y * tex.height));
+                    print(drawColor);
+                }                                
                 Vector3 localHitPoint =  hit.transform.InverseTransformPoint(hit.point);
 
                 for (int i = 0; i < vertices.Length; i++)
                 {                    
                     if (Vector3.Distance(vertices[i] , localHitPoint) < range)
                     {
-                        colors[i] = Color.red;
+                        colors[i] = drawColor;
                     }
                 }
                 mesh.colors = colors;

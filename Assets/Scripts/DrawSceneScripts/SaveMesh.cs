@@ -19,17 +19,25 @@ public class SaveMesh : MonoBehaviour
     {        
         if (Input.GetKeyDown(KeyCode.K) && EventSystem.current.currentSelectedGameObject == null)
         {
-            
-            //saveObject = GameObject.Find("MainMesh");
-            //localPath = "Assets/Mesh/" + inputText.text + ".mesh";
 
-            //AssetDatabase.Refresh();
-            //Mesh saveMesh = (Mesh)Instantiate(saveObject.GetComponent<MeshFilter>().mesh);
-            //AssetDatabase.CreateAsset(saveMesh, AssetDatabase.GenerateUniqueAssetPath(localPath));
-            
-            //Debug.Log("Mesh saved: " + localPath);
-            //AssetDatabase.SaveAssets();
-        }        
+            saveObject = GameObject.Find("MainMesh");
+            localPath = "Assets/Mesh/" + inputText.text + ".mesh";
+
+            AssetDatabase.Refresh();
+            Mesh saveMesh = (Mesh)Instantiate(saveObject.GetComponent<MeshFilter>().mesh);
+            AssetDatabase.CreateAsset(saveMesh, AssetDatabase.GenerateUniqueAssetPath(localPath));
+
+            Debug.Log("Mesh saved: " + localPath);
+            AssetDatabase.SaveAssets();
+
+            //Mesh myMesh = saveObject.GetComponent<MeshFilter>().mesh;
+            //foreach(Vector2 uv in myMesh.uv)
+            //{
+            //    print(uv);
+            //    myMesh.uv8
+            //}
+
+        }
     }
 
     
