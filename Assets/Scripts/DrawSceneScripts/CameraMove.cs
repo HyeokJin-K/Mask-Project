@@ -33,7 +33,7 @@ public class CameraMove : MonoBehaviour
         }    
 
         distacne += Input.GetAxisRaw("Mouse ScrollWheel") * wheelSpeed;
-        distacne = Mathf.Clamp(distacne, -25.0f, -10.0f);
+        distacne = Mathf.Clamp(distacne, -25.0f, -5.0f);
     }
 
     void LateUpdate()
