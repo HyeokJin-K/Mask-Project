@@ -19,7 +19,6 @@ public class SaveMesh : MonoBehaviour
     {        
         if (Input.GetKeyDown(KeyCode.K) && EventSystem.current.currentSelectedGameObject == null)
         {
-
             saveObject = GameObject.Find("MainMesh");
             localPath = "Assets/Mesh/" + inputText.text + ".mesh";
 
@@ -29,13 +28,6 @@ public class SaveMesh : MonoBehaviour
 
             Debug.Log("Mesh saved: " + localPath);
             AssetDatabase.SaveAssets();
-
-            //Mesh myMesh = saveObject.GetComponent<MeshFilter>().mesh;
-            //foreach(Vector2 uv in myMesh.uv)
-            //{
-            //    print(uv);
-            //    myMesh.uv8
-            //}
 
         }
     }
