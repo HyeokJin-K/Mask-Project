@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "3536136844",
+    "firebase_url": "https://mask-project-31d0b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mask-project-31d0b",
+    "storage_bucket": "mask-project-31d0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3536136844:android:8d0c3702f0cf1a3a0029a9",
+        "android_client_info": {
+          "package_name": "com.HalfFifty.Mask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3536136844-qu3oishdt5g11d3hn8kjvfqdsrj54khr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC10YJo4sIEiS1094jihv7-7s-0pTqfA4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3536136844-qu3oishdt5g11d3hn8kjvfqdsrj54khr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
