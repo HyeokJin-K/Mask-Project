@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Android;
+using UnityEngine.Animations;
 
 
-public class DrawInk : MonoBehaviour
+public class DrawInk1 : MonoBehaviour
 {
     public Image palleteImage;
     public RawImage selectedColor;
@@ -61,7 +62,8 @@ public class DrawInk : MonoBehaviour
             
 
             if ((localPoint.x >= r.width / -2.0f && localPoint.x <= r.width / 2.0f) &&
-                (localPoint.y >= r.height / -2.0f && localPoint.y <= r.height / 2.0f))
+                (localPoint.y >= r.height / -2.0f && localPoint.y <= r.height / 2.0f)
+                && palleteImage.gameObject.activeSelf == true)
             {
 
                 int px = Mathf.Clamp(0, (int)((localPoint.x - r.x) * tex.width / r.width), tex.width);
@@ -83,12 +85,8 @@ public class DrawInk : MonoBehaviour
                 mousePos.z = Camera.main.farClipPlane;
                 Vector3 dir = Camera.main.ScreenToWorldPoint(mousePos);
                 Vector3 palletePos = palleteImage.transform.position;
-
-                // 파레트 밖을 터치했을 때 파레트가 꺼지게 함
-                if (!(mousePos == palletePos))
-                {
-                    UIManager.uiManager.palette.SetActive(false);
-                }
+                
+                
 
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, dir, out hit, mousePos.z))
@@ -102,6 +100,11 @@ public class DrawInk : MonoBehaviour
                             colors[i] = drawColor;
                         }
                     }
+                    // 파레트 밖을 터치했을 때 파레트가 꺼지게 함
+                    if (!(mousePos == palletePos))
+                    {
+                        UIManager.uiManager.palette.SetActive(false);
+                    }
                     mesh.colors = colors;
                 }
             }
@@ -112,6 +115,7 @@ public class DrawInk : MonoBehaviour
     public void Range1()// sim..
     {
         range = 0.1f;
+
     }
 
     public void Range2()
